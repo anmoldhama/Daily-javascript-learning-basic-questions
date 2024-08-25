@@ -1,1 +1,0 @@
-# Daily-javascript-learning-basic-questions

@@ -1,0 +1,181 @@
+# Daily-javascript-learning-basic-questions
+ ---------------------------------25/08/2024----------------------------------
+
+
+//create a constructor function
+
+Explanation: Constructor functions are special functions used to create and initialize objects. When called with the new keyword, they create a new object and assign properties to it.
+
+function person(name,age){
+   this.name = name;
+   this.age = age;
+}
+let person1 = new person('anmol',25);
+let person2 = new person('sheeral',25);
+
+console.log(person1.name);
+console.log(person2.age);
+
+
+Prototypes
+Explanation: Prototypes are objects associated with constructor functions. They provide a way to share methods among all instances of a constructor function.
+
+function Animal(name) {
+  this.name = name;
+}
+
+// Adding a method to the prototype
+Animal.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+const animal1 = new Animal('Lion');
+animal1.sayName(); // Lion
+
+
+Prototype Chain
+Explanation: The prototype chain is how JavaScript looks up properties and methods. If an object doesn't have a property, JavaScript looks up the prototype chain to find it.
+
+
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+function Dog(name) {
+  Animal.call(this, name); // Inherit properties
+}
+
+// Inherit methods
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+const dog = new Dog('Buddy');
+dog.sayName(); // Buddy
+
+
+Object.create()
+Explanation: Object.create() creates a new object with the specified prototype object and properties. It is used for setting up inheritance.
+
+const animal = {
+  sayHello() {
+    console.log('Hello');
+  }
+};
+
+const dog = Object.create(animal);
+dog.sayHello(); // Hello
+
+
+Constructor Property
+Explanation: The constructor property refers to the function that created the instance. It is important for maintaining the correct reference in inheritance.
+
+function Animal(name) {
+  this.name = name;
+}
+
+function Dog(name) {
+  Animal.call(this, name);
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+const dog = new Dog('Rover');
+console.log(dog.constructor); // [Function: Dog]
+
+
+
+Inheritance Mechanisms
+Explanation: JavaScript supports inheritance through prototypes. Properties and methods can be inherited from parent objects via the prototype chain.
+
+
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.sayName = function() {
+  console.log(this.name);
+};
+
+function Dog(name) {
+  Animal.call(this, name);
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+const dog = new Dog('Rover');
+dog.sayName(); // Rover
+
+
+call() Method
+Explanation: The call() method allows you to call a function with a specific this value and arguments. It is often used in constructors for inheritance.
+
+function Animal(name) {
+  this.name = name;
+}
+
+function Dog(name) {
+  Animal.call(this, name); // Set 'this' context to the current instance
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+const dog = new Dog('Rover');
+console.log(dog.name); // Rover
+
+
+
+Question: How do you create an object in JavaScript?
+let obj = {
+   name : 'anmol',
+   age : 25,
+}
+
+let obj1 = new Object({name: 'anmol'});
+   
+console.log(obj);
+console.log(obj1);
+
+
+Question: How can you access and modify an object's properties?
+
+console.log(obj.age = 26);
+
+Question: How do you define methods within an object?
+
+const person = {
+  name: 'Alice',
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+};
+
+person.greet(); // Hello, my name is Alice
+
+
+Question: What is the difference between object.property and object['property']?
+
+const obj = {
+  name: 'Alice',
+  age: 30
+};
+
+// Dot notation
+console.log(obj.name); // Alice
+
+// Bracket notation
+console.log(obj['age']); // 30
+
+
+
+
+
+
+
+
