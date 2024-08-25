@@ -173,6 +173,92 @@ console.log(obj.name); // Alice
 console.log(obj['age']); // 30
 
 
+Question: How do you add new properties to an existing object?
+
+const car = {
+  brand: 'Toyota',
+  model: 'Camry'
+};
+
+car.year = 2020; // Adding new property
+car['color'] = 'Blue'; // Another way to add a new property
+
+console.log(car); // { brand: 'Toyota', model: 'Camry', year: 2020, color: 'Blue' }
+
+
+Question: How do you delete a property from an object?
+
+const person = {
+  name: 'Alice',
+  age: 30
+};
+
+delete person.age; // Deletes the age property
+
+console.log(person); // { name: 'Alice' }
+
+
+Question: What is the this keyword and how is it used in object methods?
+
+let obj = {
+   name : 'anmol',
+   age : 25,
+   sayHi: function(){
+      console.log(this.name);
+   }
+}
+
+console.log(obj.sayHi());
+
+
+Question: How can you check if an object has a specific property?
+
+const car = {
+  brand: 'Toyota',
+  model: 'Camry'
+};
+
+console.log('brand' in car); // true
+console.log('year' in car); // false
+
+
+Question: What is the purpose of the in operator?
+
+const car = {
+  brand: 'Toyota',
+  model: 'Camry'
+};
+
+console.log('brand' in car); // true
+console.log('color' in car); // false
+
+
+Question: What is prototypal inheritance?
+
+function Animal(name,age){
+   this.name = name;
+   this.age = age;
+}
+
+Animal.prototype.sayHi = function(name){
+   console.log(this.name);
+}
+
+function Dog(name){
+   Animal.call(this,name);
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+let dog = new Dog('Rover');
+
+console.log(dog.sayHi());
+
+
+
+
+
 
 
 
